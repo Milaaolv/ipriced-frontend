@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --bg: #EEF6F9;
+    --card: #FFFFFF;
+    --primary: #3F7B85;
+    --primary-weak: #92C3BF;
+    --text: #343434;
+    --muted: #8C8A98;
+    --stroke: #E5E6EC;
+    --chip: #EFEFFF;
+    --radius: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, #eef5f5, #E7F3F3);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card);
+    max-width: 450px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(61, 96, 93, 0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.logo span {
+    color: #b0d6d5;
+    text-transform: lowercase;
+}
+
+.logo {
+    text-align: center;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+h2,
+a,
+label {
+    color: var(--text);
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+hr {
+    margin-bottom: 15px;
+}
+
+input,
+button {
+    font-family: inherit;
+    font-size: 14px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-weight: 300;
+    font-size: 14px;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--stroke);
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border: 1px solid var(--primary);
+}
+
+a {
+    font-size: 12px;
+    text-align: end;
+    text-decoration: underline;
+    font-weight: 500;
+    color: var(--text);
+    margin-top: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    margin-top: 30px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #2F6B75;
+}
+
+/* ======== RESPONSIVO ======== */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    label {
+        font-size: 13px;
+    }
+
+    input,
+    button {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    a {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 15px;
+    }
+
+    input,
+    button {
+        font-size: 12px;
+        padding: 8px;
+    }
+}

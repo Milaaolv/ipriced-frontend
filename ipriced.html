@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iPRICED</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ipriced.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="logo"><span>i</span>PRICED</div>
+    <div class="card">
+      <!-- MENU DENTRO DO CONTAINER -->
+      <div class="tabs">
+        <button class="tab active" data-view="view-ingredientes">Ingredientes</button>
+        <button class="tab" data-view="view-receitas">Receitas</button>
+        <button class="tab" data-view="view-encomendas">Encomendas</button>
+        <button class="tab" data-view="view-conversor">Conversor</button>
+      </div>
+
+      <!-- INGREDIENTES -->
+      <section id="view-ingredientes" class="view active">
+        <h2>Novo ingrediente</h2>
+        <div class="grid-2">
+          <div>
+            <label class="small">Nome do ingrediente</label>
+            <input id="ing-nome" class="input" placeholder="Ex.: Açúcar refinado" />
+          </div>
+          <div>
+            <label class="small">Preço pago (R$)</label>
+            <input id="ing-preco" type="number" step="0.01" class="input" placeholder="Ex.: 7,90" />
+          </div>
+        </div>
+        <div class="inline" style="margin-top:8px">
+          <input id="ing-qtd" class="input" type="number" min="0" step="0.01" placeholder="Quantidade" />
+          <select id="ing-unit" class="select">
+            <option value="" selected disabled>Un de medida</option>
+            <option>g</option>
+            <option>ml</option>
+            <option>kg</option>
+            <option>L</option>
+            <option>un</option>
+          </select>
+        </div>
+        <button id="btn-add-ing" class="primary" style="margin-top:10px">Adicionar ingrediente</button>
+
+        <div class="list" id="lista-ingredientes"></div>
+      </section>
+
+      <!-- RECEITAS -->
+      <section id="view-receitas" class="view">
+        <div>
+          <label class="small">Nome da receita</label>
+          <input id="rec-nome" class="input" placeholder="Ex.: Bolo de cenoura" />
+        </div>
+
+        <!-- Cabeçalho das colunas -->
+        <div class="inline" style="margin: 15px 0 10px 0">
+          <div class="small" style="flex:2;color:#6a6a77">Ingredientes</div>
+          <div class="small" style="flex:1;color:#6a6a77">Qt usada</div>
+          <div class="small" style="flex:1;color:#6a6a77">Un de medida</div>
+        </div>
+
+        <!-- Linhas -->
+        <div id="rec-rows"></div>
+
+        <div class="inline" style="margin-top:6px">
+          <button id="btn-add-row" class="link">Adicionar mais ingredientes</button>
+          <div style="flex:1"></div>
+        </div>
+
+        <hr>
+
+        <div class="grid-2" style="margin-top:8px">
+          <div>
+            <label class="small opt">Rendimento (opcional)</label>
+            <input id="rec-rendimento" type="number" class="input" placeholder="Ex.: 12" />
+          </div>
+          <div>
+            <label class="small">Mão de obra (R$)</label>
+            <input id="rec-mao" type="number" step="0.01" class="input" placeholder="Ex.: 15,00" />
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:8px">
+          <div>
+            <label class="small">Margem de lucro (%)</label>
+            <input id="rec-margem" type="number" class="input" value="30" />
+          </div>
+          <div style="display:flex;gap:10px;align-items:end; padding-bottom: 9px;">
+            <button id="btn-calcular" class="primary" style="background: #92C3BF">Calcular</button>
+            <button id="btn-salvar-receita" class="primary" style="background:#23535c">Salvar receita</button>
+          </div>
+        </div>
+
+        <div id="rec-resultado" class="result-card" style="display:none"></div>
+
+        <h2 style="margin-top:14px">Receitas salvas</h2>
+        <div class="list" id="lista-receitas"></div>
+      </section>
+
+      <!-- ENCOMENDAS -->
+      <section id="view-encomendas" class="view">
+        <h2>Nova encomenda</h2>
+        <div class="grid-2">
+          <div>
+            <label class="small">Nome do cliente</label>
+            <input id="enc-nome" class="input" placeholder="Ex.: Maria Silva" />
+          </div>
+          <div>
+            <label class="small">Data de entrega</label>
+            <input id="enc-data" type="date" class="input" />
+          </div>
+        </div>
+
+        <div id="produtos-encomenda" class="list" style="margin-top:10px"></div>
+        <button id="btn-add-prod" class="link">Adicionar produto</button>
+
+        <button id="btn-add-enc" class="primary" style="margin-top:10px">Adicionar encomenda</button>
+
+        <h2 style="margin-top:14px">Próximas encomendas</h2>
+        <div class="list" id="lista-encomendas"></div>
+      </section>
+
+      <!-- CONVERSOR -->
+      <section id="view-conversor" class="view">
+        <h2>Conversor de Medidas</h2>
+
+        <div class="pill">Básico</div>
+        <div class="inline" style="margin-top:8px">
+          <input id="conv-val" class="input" type="number" step="0.01" placeholder="Valor" />
+          <select id="conv-from" class="select">
+            <option value="" disabled selected>De</option>
+            <option>g</option>
+            <option>kg</option>
+            <option>ml</option>
+            <option>L</option>
+            <option>un</option>
+          </select>
+          <select id="conv-to" class="select">
+            <option value="" disabled selected>Para</option>
+            <option>g</option>
+            <option>kg</option>
+            <option>ml</option>
+            <option>L</option>
+            <option>un</option>
+          </select>
+        </div>
+        <button id="btn-conv-basico" class="primary" style="margin-top:8px">Converter</button>
+        <div id="conv-res-basico" class="result-card" style="display:none"></div>
+
+        <div class="pill" style="margin-top:14px">Culinário</div>
+        <div class="inline" style="margin-top:8px">
+          <input id="cul-val" class="input" type="number" step="0.01" placeholder="Quantidade" />
+          <select id="cul-from" class="select">
+            <option value="" disabled selected>Medida</option>
+            <option value="cup_sugar">Xícara (açúcar)</option>
+            <option value="cup_flour">Xícara (farinha)</option>
+            <option value="tbsp">Colher de sopa</option>
+            <option value="tsp">Colher de chá</option>
+            <option value="egg">Ovo médio</option>
+          </select>
+          <select id="cul-to" class="select">
+            <option value="" disabled selected>Para</option>
+            <option value="g">g</option>
+            <option value="ml">ml</option>
+            <option value="un">un</option>
+          </select>
+        </div>
+        <button id="btn-conv-cul" class="primary" style="margin-top:8px">Converter</button>
+        <div id="conv-res-cul" class="result-card" style="display:none"></div>
+      </section>
+
+    </div>
+  </div>
+  <script src="ipriced.js"></script>
+</body>
+
+</html>

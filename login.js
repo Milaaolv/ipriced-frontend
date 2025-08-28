@@ -25,7 +25,8 @@ form.addEventListener('submit', async function (e) {
     // Só envia pro backend se passou na validação
     if (valid) {
         try {
-            const response = await fetch("http://localhost:3000/login", {
+            const backendURL = "https://ipriced-backend.onrender.com";
+            const response = await fetch("https://ipriced-backend.onrender.com/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
